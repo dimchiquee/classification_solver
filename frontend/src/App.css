@@ -1,0 +1,97 @@
+.App {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.editor-container,
+.inference-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.property-group,
+.type-group {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fafafa;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.delete-btn {
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border: 2px solid #dc3545;
+    color: #dc3545;
+    border-radius: 50%;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.3s, color 0.3s;
+    padding: 0;
+}
+
+.delete-btn:hover {
+    border-color: #c82333;
+    color: #c82333;
+}
+
+.two-column {
+    display: flex;
+    gap: 20px;
+}
+
+.column {
+    flex: 1;
+}
+
+.column ul {
+    padding-left: 0;
+}
+
+.result {
+    padding: 15px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.error {
+    color: #dc3545;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.completeness-check {
+    padding: 15px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.completeness-check.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.completeness-check.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}

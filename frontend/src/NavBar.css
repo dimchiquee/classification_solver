@@ -1,0 +1,38 @@
+nav {
+    width: 200px;
+    background-color: #f0f0f0;
+    margin: 0px 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+nav li {
+    margin: 10px 0px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #575757;
+    font-weight: 500;
+    transition: color 0.3s;
+    display: block;
+}
+
+nav a:hover {
+    color: #787878;
+}
+
+nav a.active {
+    color: #с9с9с9;
+}
+
+nav li:has(a.active) {
+    background-color: #b5b5b5;
+    padding: 5px 10px;
+    border-radius: 4px 0px 0px 4px;
+}
