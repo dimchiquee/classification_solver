@@ -82,7 +82,6 @@ def classify_item(db: Session, item_data: Dict[str, str]) -> Dict:
             "type": "Тип предмета не определён",
             "explanation": [
                 "Все гипотезы о типе предмета опровергнуты. Тип предмета не определён."
-
             ] + explanations
         }
 

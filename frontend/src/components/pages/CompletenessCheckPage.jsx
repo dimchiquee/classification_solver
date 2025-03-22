@@ -21,7 +21,6 @@ const CompletenessCheckPage = () => {
       const data = await api.checkCompleteness();
       setIncompleteTypes(data.incomplete_types || []);
       setPropertiesWithoutValues(data.properties_without_values || []);
-
       if (data.incomplete_types.length === 0 && data.properties_without_values.length === 0) {
         toast.success("Все поля заполнены!");
         setIsComplete(true);
