@@ -265,13 +265,15 @@ def check_completeness(db: Session):
         type_id = type_obj.id
         type_name = type_obj.name
         type_props = get_type_properties(db, type_id)
+
         if not type_props:
             results["incomplete_types"].append(
                 {"type": type_name, "reason": "нет свойств"}
             )
             continue
 
-        all_properties_have_values = True
+        missing_value_properties = []
+
         for prop_name in type_props:
             db_property = db.query(models.Property).filter(models.Property.name == prop_name).first()
             if not db_property:
@@ -279,12 +281,15 @@ def check_completeness(db: Session):
 
             prop_values = get_property_values(db, type_id, db_property.id)
             if not prop_values:
-                all_properties_have_values = False
-                break
+                missing_value_properties.append(prop_name)
 
-        if not all_properties_have_values:
-             results["incomplete_types"].append(
-                {"type": type_name, "reason": "нет значений свойств"}
+        if missing_value_properties:
+            results["incomplete_types"].append(
+                {
+                    "type": type_name,
+                    "reason": "нет значений для следующих свойств",
+                    "properties": missing_value_properties
+                }
             )
 
     for property_obj in all_properties:

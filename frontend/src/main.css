@@ -70,3 +70,8 @@ ul {
 li {
     margin-bottom: 8px;
 }
+
+ul ul {
+    margin: 10px;
+    color: #555;
+}

@@ -29,7 +29,6 @@ const CompletenessCheckPage = () => {
         toast.error("Не все поля заполнены!");
         setIsComplete(false);
       }
-
     } catch (error) {
       setError(error.message);
       toast.error("Ошибка при проверке полноты знаний!");
@@ -55,9 +54,20 @@ const CompletenessCheckPage = () => {
           <ul>
             {incompleteTypes.map((item, index) => (
               <li key={index}>
-                {item.reason === "no_types_defined"
-                  ? "Типы предметов не определены."
-                  : `Тип: ${item.type}, причина: ${item.reason}`}
+                {item.type === "Нет типов" ? (
+                  "Типы предметов не определены."
+                ) : (
+                  <>
+                    Тип: <strong>{item.type}</strong>, причина: {item.reason}
+                    {item.properties && item.properties.length > 0 && (
+                      <ul>
+                        {item.properties.map((prop, propIndex) => (
+                          <li key={propIndex}>{prop}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </>
+                )}
               </li>
             ))}
           </ul>
@@ -71,7 +81,11 @@ const CompletenessCheckPage = () => {
         {propertiesWithoutValues.length > 0 ? (
           <ul>
             {propertiesWithoutValues.map((property, index) => (
-              <li key={index}>{property === "Нет свойств" ? property : `Свойство ${property} не имеет возможных значений.`}</li>
+              <li key={index}>
+                {property === "Нет свойств"
+                  ? "Свойства не определены."
+                  : `Свойство "${property}" не имеет возможных значений.`}
+              </li>
             ))}
           </ul>
         ) : (
